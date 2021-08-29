@@ -16,11 +16,11 @@ class TasksController extends Controller
     public function index()
     {
      // メッセージ一覧を取得
-        $task = Task::all();
+        $tasks = Task::all();
 
         // メッセージ一覧ビューでそれを表示
-        return view('task.index', [
-            'task' => $task,
+        return view('tasks.index', [
+            'tasks' => $tasks,
         ]);
     }
 
@@ -34,7 +34,7 @@ class TasksController extends Controller
         $task = new Task;
 
         // メッセージ作成ビューを表示
-        return view('task.create', [
+        return view('tasks.create', [
             'task' => $task,
         ]);
         //
@@ -48,6 +48,10 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
+         // バリデーション
+        $request->validate([
+            'content' => 'required|max:255',
+        ]);
         // メッセージを作成
         $task = new Task;
         $task->content = $request->content;
@@ -67,9 +71,9 @@ class TasksController extends Controller
     {
      // idの値でメッセージを検索して取得
         $task = Task::findOrFail($id);
-
+        
         // メッセージ詳細ビューでそれを表示
-        return view('task.show', [
+        return view('tasks.show', [
             'task' => $task,
         ]);
     }
@@ -86,7 +90,7 @@ class TasksController extends Controller
         $task = Task::findOrFail($id);
 
         // メッセージ編集ビューでそれを表示
-        return view('task.edit', [
+        return view('tasks.edit', [
             'task' => $task,
         ]);
     }
