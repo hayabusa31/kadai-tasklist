@@ -21,4 +21,3 @@ class TrustProxies extends Middleware
      */
     protected $headers = Request::HEADER_X_FORWARDED_ALL;
 }
- protected $proxies = '*'; // 全プロキシを信用
