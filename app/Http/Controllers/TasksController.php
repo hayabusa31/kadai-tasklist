@@ -20,7 +20,7 @@ class TasksController extends Controller
 
         // メッセージ一覧ビューでそれを表示
         return view('tasks.index', [
-            'tasks' => $tasks,
+            'task' => $tasks,
         ]);
     }
 

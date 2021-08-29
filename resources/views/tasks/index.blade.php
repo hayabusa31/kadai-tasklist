@@ -5,7 +5,7 @@
 <!-- ここにページ毎のコンテンツを書く -->
     <h1>タスク一覧</h1>
 
-    @if (count($tasks) > 0)
+    @if (count($task) > 0)
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($tasks as $task)
+                @foreach ($task as $task)
                 <tr>
                     <td>{{$task->id}}</td>
                     <td>{{$task->content}}</td>
